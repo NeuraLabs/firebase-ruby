@@ -1,4 +1,4 @@
-require 'typhoeus'
+require 'httparty'
 require 'json'
 require 'open-uri'
 require 'uri'
@@ -42,11 +42,7 @@ module Firebase
     private
 
     def process(method, path, body=nil, query_options={})
-      request = Typhoeus::Request.new(build_url(path),
-                                      :body => body,
-                                      :method => method,
-                                      :params => query_options)
-      response = request.run
+      response = HTTParty.send(method, body: body, query: query_options)
       Firebase::Response.new(response)
     end
 

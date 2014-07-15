@@ -8,9 +8,7 @@ module Firebase
     end
 
     def body
-      JSON.parse(response.body, :quirks_mode => true)
-    rescue JSON::ParserError => e
-      response.body == 'null' ? nil : raise
+      response.parsed_response
     end
 
     def raw_body
