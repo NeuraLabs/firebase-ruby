@@ -42,7 +42,7 @@ module Firebase
     private
 
     def process(method, path, body=nil, query_options={})
-      response = HTTParty.send(method, body: body, query: query_options)
+      response = HTTParty.send(method, path, body: body, query: query_options)
       Firebase::Response.new(response)
     end
 
