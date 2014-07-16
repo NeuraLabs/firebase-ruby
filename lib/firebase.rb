@@ -57,4 +57,3 @@ module Firebase
     end
   end
 end
-
